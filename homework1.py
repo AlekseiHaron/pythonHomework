@@ -3,7 +3,9 @@ import random
 a_list = []
 for i in range(100):
     a_list.append(random.randint(0, 1000))
-
+"""
+sort list from min to max (without using sort())
+"""
 for i in range(len(a_list)):
     for j in range(i + 1, len(a_list)):
 
@@ -26,19 +28,28 @@ def my_min(my_list):
 print(my_max(a_list))
 print(my_min(a_list))
 
+"""
+calculate average for even and odd numbers
+"""
+Even_Sum = 0
+Odd_Sum = 0
+Odd_cnt = 0
+Even_cnt = 0
+for num in a_list:
+    if (num % 2 != 0):
+        Odd_Sum = Odd_Sum + num
+        Odd_cnt += 1
+    else:
+        Even_Sum = Even_Sum + num
+        Even_cnt += 1
 
-n = input(6)
+# average_Odd = Odd_Sum / len(a_list)
+# average_Even = Even_Sum / len(a_list)
 
-n = int(n)
+average_Odd = Odd_Sum / Odd_cnt
+average_Even = Even_Sum / Even_cnt
 
-sum = 0
-
-for num in range(0, n + 1, 1):
-
-    if (not (num % 2) == 0):
-        sum += num;
-
-average = sum / n
-
-print("SUM of odd numbers is: ", sum)
-print("Average of odd numbers is: ", average)
+print(Odd_Sum, Even_Sum)
+print(Odd_cnt, Even_cnt)
+print("Average of Odd list element is : ", average_Odd)
+print("Average of Even list element is ", average_Even)
