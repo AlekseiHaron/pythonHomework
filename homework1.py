@@ -1,5 +1,7 @@
 import random
-
+"""
+create list of 100 random numbers from 0 to 1000
+"""
 a_list = []
 for i in range(100):
     a_list.append(random.randint(0, 1000))
@@ -20,7 +22,7 @@ def my_max(my_list):
     return sorted(my_list)[-1]
 
 
-# here, the list we passed gets sorted and its min item is retrieved (item with index 0)
+# the list we passed gets sorted and its min item is retrieved (item with index 0)
 def my_min(my_list):
     return sorted(my_list)[0]
 
