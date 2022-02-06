@@ -52,28 +52,3 @@ def sentence_case(texts):
 print(sentence_case(text))
 
 print("======================================================")
-# text = text.lower().replace("“iz”", " “iz”").replace(" iz ", " is ")
-# words_with_dots = re.findall(r'\w*\.', text)
-# join_words=(' '.join(words_with_dots).replace('.','')+'.').capitalize()
-# join_words = join_words.split(".")
-# print(join_words)
-
-
-# print("======================================================")
-
-# text = text.lower().replace("“iz”", " “iz”").replace(" iz ", " is ")
-# sentences = re.findall('[^.!?\t]+[.:\n\n!?](?:\s)', text)
-# sentences = [x[0].upper() + x[1:] for x in sentences]
-#
-# words_with_dots = re.findall(r'\w*\.', text)
-# join_words=(' '.join(words_with_dots).replace('.','')+'.').capitalize()
-# join_words = join_words.split(".")
-# mid_t = sentences[0:][:5] + ["\n\t"] + join_words[0:][:1] + [". "] + ["\n\n\t"] + sentences[5:]
-#
-# new_text = ''.join(mid_t)
-#
-# # print(mid_t)
-# # print(sentences)
-# print(new_text)
-# # print(sentences[0:][:1])
-# # print(sentences[0:][:5])
