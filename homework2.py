@@ -14,7 +14,7 @@ print(rand_list)
 for dictionary in rand_list:                    #merge numbers in rand_list into one dict, example should be 'j': [90, 67] at the end
   for k, v in dictionary.items():               #items() return a new view of the dictionary’s items
     tmp_dict.setdefault(k, []).append(v)        #setdefault - If key is in the dictionary, return its value. If not, insert key with a value of default and return default. Adds a number (0-100) in list at the end of the dict
-print(tmp_dict)
+# print(tmp_dict)
 
 #Choose only the biggest one and create one common dict
 for k, v in tmp_dict.items():                           # for item from previously dict to create a new view of the dicts items
