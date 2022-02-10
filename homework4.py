@@ -2,15 +2,17 @@ import re
 from random import randint, choice
 from string import ascii_lowercase
 
-
-print("==========================================Refactor_Homemork2:======================================================")
+print(
+    "==========================================Refactor_Homemork2:======================================================")
 
 """
 create a list of random number of dicts (from 2 to 10)
 dict's random numbers of keys should be letter, 
 dict's values should be a number (0-100), 
 """
-def r_list():
+
+
+def r_list(elem_count, dict_value):
     rand_list = []
     for j in range(randint(2, 10)):
         rand_list.append({choice(ascii_lowercase): randint(0, 100) for i in range(randint(0, len(ascii_lowercase)))})
@@ -33,13 +35,13 @@ def create_list_of_rand_num_of_dicts(input):
     return final_dict
 
 
-
 # give param to method
-random_list = r_list()
+random_list = r_list(10, 100)
 print(random_list)
 print(create_list_of_rand_num_of_dicts(random_list))
 
-print("\n==========================================Refactor_Homemork3:======================================================")
+print(
+    "\n==========================================Refactor_Homemork3:======================================================")
 
 text = """homEwork:
 	tHis iz your homeWork, copy these Text to variable. 
@@ -66,6 +68,7 @@ def count_num_of_whitespaces(input_item):
     except Exception as e:
         print(f"Exception: {e}")
     return count
+
 
 # give param to method
 print(count_num_of_whitespaces(text))
@@ -98,7 +101,3 @@ def sentence_case(texts):
 print(sentence_case(text))
 
 print("======================================================")
-
-
-
-
