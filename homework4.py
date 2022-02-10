@@ -10,16 +10,18 @@ create a list of random number of dicts (from 2 to 10)
 dict's random numbers of keys should be letter, 
 dict's values should be a number (0-100), 
 """
-rand_list = []
-for j in range(randint(2, 10)):
-    rand_list.append({choice(ascii_lowercase): randint(0, 100) for i in range(randint(0, len(ascii_lowercase)))})
-print(rand_list)
+def r_list():
+    rand_list = []
+    for j in range(randint(2, 10)):
+        rand_list.append({choice(ascii_lowercase): randint(0, 100) for i in range(randint(0, len(ascii_lowercase)))})
+    return rand_list
+
 
 # method to create lists of random numbers of dicts
-def create_list_of_rand_num_of_dicts(self):
+def create_list_of_rand_num_of_dicts(input):
     final_dict, tmp_dict = {}, {}
 
-    for dictionary in self:
+    for dictionary in input:
         for k, v in dictionary.items():
             tmp_dict.setdefault(k, []).append(v)
     for k, v in tmp_dict.items():
@@ -30,8 +32,12 @@ def create_list_of_rand_num_of_dicts(self):
     # print(final_dict)
     return final_dict
 
+
+
 # give param to method
-print(create_list_of_rand_num_of_dicts(rand_list))
+random_list = r_list()
+print(random_list)
+print(create_list_of_rand_num_of_dicts(random_list))
 
 print("\n==========================================Refactor_Homemork3:======================================================")
 
@@ -46,11 +52,11 @@ text = """homEwork:
 
 
 # method to check the number of whitespaces are 87:
-def count_num_of_whitespaces(self):
+def count_num_of_whitespaces(input_item):
     count = 0
 
     try:
-        for i in self:
+        for i in input_item:
             if i.isspace():
                 count = count + 1
         if count == 87:
