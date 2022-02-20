@@ -33,18 +33,19 @@ def main():
                 Publish.__init__(self, base_text=base_text)
                 self.y = city
 
-            # def pub_time(self):
-            #     now_date = datetime.now()
-            #     date_time = now_date.strftime("%m/%d/%Y, %H:%M")
-            #     print(date_time)
+            def pub_time(self):
+                now_date = datetime.now()
+                date_time = now_date.strftime("%m/%d/%Y, %H:%M")
+                return date_time
 
-        now_date = datetime.now()
-        date_time = now_date.strftime("%m/%d/%Y, %H:%M")
+        # now_date = datetime.now()
+        # date_time = now_date.strftime("%m/%d/%Y, %H:%M")
         a = News(input_news, input_city)
-        print(f'{a.x}\n{a.y}: {date_time}')
+        a.pub_time()
+        print(f'{a.x}\n{a.y}: {a.pub_time()}')
 
         f = open(r"C:\Users\Oleksii_Kushnir\PycharmProjects\pythonHomework\Test.txt", "a")
-        f.write(f'\n\nNews -------------------------\n{a.x}\n{a.y}: {date_time}')
+        f.write(f'\n\nNews -------------------------\n{a.x}\n{a.y}: {a.pub_time()}')
         f.close()
 
     if val == 2:
@@ -61,20 +62,23 @@ def main():
                 Publish.__init__(self, base_text=base_text)
                 self.y = input_future
 
-        now = datetime.now()
-        current_date = now.date()
+            def pub_days(self):
+                now = datetime.now()
+                current_date = now.date()
+                days_left = future_date - current_date
+                return days_left.days
 
-        days_left = future_date - current_date
+        # now = datetime.now()
+        # current_date = now.date()
+        # days_left = future_date - current_date
+
         a = Adv(input_adv, future_date)
+        a.pub_days()
 
-        # days_left= days_left.strptime("%Y-%m-%d")
-        # print(now)
-        # print(future_date)
-        # print(days_left)
-        print(f'{a.x}\nActual until: {a.y}, {days_left.days} days left')
+        print(f'{a.x}\nActual until: {a.y}, {a.pub_days()} days left')
 
         f = open(r"C:\Users\Oleksii_Kushnir\PycharmProjects\pythonHomework\Test.txt", "a")
-        f.write(f'\n\nPrivate Ad ------------------\n{a.x}\nActual until: {a.y}, {days_left.days} days left')
+        f.write(f'\n\nPrivate Ad ------------------\n{a.x}\nActual until: {a.y}, {a.pub_days()} days left')
         f.close()
 
     if val == 3:
