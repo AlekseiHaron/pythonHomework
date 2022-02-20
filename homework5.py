@@ -6,6 +6,7 @@ class Publish:
         self.x = base_text
 
 
+#tool to which will do user generated news feed:
 def main():
     while True:
         try:
