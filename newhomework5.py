@@ -7,7 +7,6 @@ class Publish:
 
 
 class News(Publish):
-    # print("News______")
 
     def __init__(self, base_text, city):
         Publish.__init__(self, base_text=base_text)
@@ -25,7 +24,6 @@ class News(Publish):
 
 
 class Adv(Publish):
-    print("Private Ad ------------------")
 
     def __init__(self, base_text, input_future):
         Publish.__init__(self, base_text=base_text)
@@ -46,7 +44,6 @@ class Adv(Publish):
 
 
 class Jokes(Publish):
-    print("Joke of the day ------------")
 
     def __init__(self, base_text, ending="READ MORE NEXT TIME"):
         Publish.__init__(self, base_text=base_text)
