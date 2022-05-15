@@ -1,5 +1,5 @@
 from datetime import datetime
-
+from file_to_file import FileToFile
 
 class Publish:
     def __init__(self, base_text):
@@ -18,8 +18,8 @@ class News(Publish):
         return date_time
 
     def write_news_to_file(self):
-        f = open(r"C:\Users\Oleksii_Kushnir\PycharmProjects\pythonHomework\Test.txt", "a")
-        f.write(f'\nNews -------------------------\n{self.text}\n{self.city}: {self.pub_time()}\n')
+        f = open(r"Test.txt", "a")
+        f.write(f'\nNews:\n{self.text}\n{self.city}: {self.pub_time()}\n')
         f.close()
 
 
@@ -38,8 +38,8 @@ class Adv(Publish):
         return days_left.days
 
     def write_adv_to_file(self):
-        f = open(r"C:\Users\Oleksii_Kushnir\PycharmProjects\pythonHomework\Test.txt", "a")
-        f.write(f'\nPrivate Ad ------------------\n{self.text}\nActual until: {self.input_date}, {self.pub_days()} days left\n')
+        f = open(r"Test.txt", "a")
+        f.write(f'\nPrivate Ad:\n{self.text}\nActual until: {self.input_date}, {self.pub_days()} days left\n')
         f.close()
 
 
@@ -50,41 +50,9 @@ class Jokes(Publish):
         self.ending = ending
 
     def write_joke_to_file(self):
-        f = open(r"C:\Users\Oleksii_Kushnir\PycharmProjects\pythonHomework\Test.txt", "a")
-        f.write(f'\nJoke of the day ------------\n{self.text}\n{self.ending}\n')
+        f = open(r"Test.txt", "a")
+        f.write(f'\nJoke of the day:\n{self.text}\n{self.ending}\n')
         f.close()
-
-class FileToFile:
-
-    def __init__(self):
-        pass
-
-    def copy_from_file(self):
-        with open(r'C:\Users\Oleksii_Kushnir\PycharmProjects\pythonHomework\first.txt', 'r') as firstfile,\
-                open(r'C:\Users\Oleksii_Kushnir\PycharmProjects\pythonHomework\test.txt', 'a') as secondfile:
-
-            # read content from first file
-            for line in firstfile:
-
-                # write content to second file
-                try:
-                    if line.istitle():
-                        line
-                    else:
-                        line = line.upper().capitalize()
-                finally:
-                    line
-                # join_words = ''.join(line)
-                # print(join_words)
-                # print(line.split("\n"))
-                line = line.replace('\n', '')
-                # line = ' '.join(line)
-                print(line)
-                # li = line.lower().capitalize()
-
-                secondfile.write(f"\n{line}")
-        secondfile.close()
-        firstfile.close()
 
 
 #tool to which will do user generated news feed:
@@ -123,7 +91,7 @@ def main():
                 'Type here News and click Enter: '))
             input_city = str(input(
                 'Type here City and click Enter: '))
-            print("News______")
+            print("News:")
             a = News(input_news, input_city)
             a.pub_time()
             a.write_news_to_file()
@@ -133,7 +101,7 @@ def main():
             input_adv = str(input(
                 'Type your Advertisement text here: '))
             due_date = str(input("Type due date af Ad here(yyyy-mm-dd): "))
-            print("Private Ad ------------------")
+            print("Private Ad:")
             a = Adv(input_adv, due_date)
             a.pub_days()
             a.write_adv_to_file()
@@ -142,7 +110,7 @@ def main():
         if val == 3:
             input_jokes = str(input(
                 'Type your Jokes text here: '))
-            print("Joke of the day ------------")
+            print("Joke of the day:")
             a = Jokes(input_jokes)
             a.write_joke_to_file()
             print(f'{a.text}\n{a.ending}')
