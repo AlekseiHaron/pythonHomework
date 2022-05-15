@@ -12,8 +12,8 @@ class FileToFile:
         # Path
         path = os.path.join(location, file)
         print(path)
-        with open(r'C:\Users\Oleksii_Kushnir\PycharmProjects\pythonHomework\first.txt', 'r') as firstfile,\
-                open(r'C:\Users\Oleksii_Kushnir\PycharmProjects\pythonHomework\test.txt', 'a') as secondfile:
+        with open(r'first.txt', 'r') as firstfile,\
+                open(r'test.txt', 'a') as secondfile:
 
             # read content from first file
             for line in firstfile:
