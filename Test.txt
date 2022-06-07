@@ -1,6 +1,6 @@
 Feeds:
 
-News@123
+News:
 Peter Parker is Spider Man
 NY: 04/25/2022, 17:00
 

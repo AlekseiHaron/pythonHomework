@@ -1,5 +1,6 @@
 from datetime import datetime
 from file_to_file import FileToFile
+from csv_parsing import CSVParsing
 
 class Publish:
     def __init__(self, base_text):
@@ -60,11 +61,12 @@ def main():
     while True:
         try:
             input_one = int(input('Enter 1 if you want to add feeds Manually,'
-                                  '\nEnter 2 if you want to add feeds from File: '))
+                                  '\nEnter 2 if you want to add feeds from File: '
+                                  '\nEnter 3 to parsing from File to CSV: '))
         except ValueError:
             print("Sorry, I didn't understand that.")
             continue
-        if input_one not in [1, 2]:
+        if input_one not in [1, 2, 3]:
             print("Please enter correct number")
             continue
         else:
@@ -119,6 +121,12 @@ def main():
         print("File updated successfully with:\n")
         copy_from_file = FileToFile()
         copy_from_file.copy_from_file()
+
+    if input_one == 3:
+        print("File parsed successfully with:\n")
+        file_to_csv = CSVParsing()
+        file_to_csv.file_to_csv_first()
+        file_to_csv.file_to_csv_second()
 
 
 if __name__ == '__main__':
