@@ -12,9 +12,6 @@ Joke of the day:
 People are making end of the world jokes, like there’s no tomorrow.
 READ MORE NEXT TIME
 
-
-
-
 Private ad:
 Testtest
 Actual until: 2022-06-01, 43 days left
@@ -22,3 +19,19 @@ Actual until: 2022-06-01, 43 days left
 Joke of the day:
 This is the best hometask ever you see.
 Stay tuned for our next jokes. smile.
+
+News:
+test
+test: 06/26/2022, 17:47
+
+News:
+test news for parsing json to the text file
+Chernihiv: 06/26/2022, 19:37
+
+Private Ad:
+test advertisement for parsing json to the text file
+Actual until: 2022-07-31, 35 days left
+
+Joke of the day:
+test joke for parsing json to the text file
+This is all
