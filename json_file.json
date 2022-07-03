@@ -1,6 +1,6 @@
 [
     {
-        "type": "News", "text": "test news for parsing json to the text file", "location": "Chernihiv"
+        "type": "News", "text": "test news for parsing json to the text file", "location": "Kyiv"
     },
     {
         "type": "Adv", "adv_text": "test advertisement for parsing json to the text file", "adv_date": "2022-07-31"

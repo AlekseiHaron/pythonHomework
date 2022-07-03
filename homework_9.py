@@ -1,20 +1,21 @@
 from datetime import datetime
 from file_to_file import FileToFile
 from csv_parsing import CSVParsing
-from main_classes import News, Adv, Jokes, ParseJson
+from main_classes import News, Adv, Jokes, ParseJson, ParseXML
 
 
 def main():
     while True:
         try:
             input_one = int(input('Enter 1 if you want to add feeds Manually:'
-                                  '\nEnter 2 if you want to add feeds from File: '
-                                  '\nEnter 3 to parsing from File to CSV: '
-                                  '\nEnter 4 if you want to load json to file:'))
+                                  '\nEnter 2 if you want to add feeds from File:'
+                                  '\nEnter 3 to parsing from File to CSV:'
+                                  '\nEnter 4 if you want to load JSON to file:'
+                                  '\nEnter 5 if you want to load XML to file:'))
         except ValueError:
             print("Sorry, I didn't understand that.")
             continue
-        if input_one not in [1, 2, 3, 4]:
+        if input_one not in [1, 2, 3, 4, 5]:
             print("Please enter correct number")
             continue
         else:
@@ -26,7 +27,10 @@ def main():
         while True:
             try:
                 val = int(input(
-                    'Enter 1 if you want to add NEWS,\nEnter 2 if you want to add Private Ad,\nEnter 3 if you want to add Joke value,\nType here and click Enter: '))
+                    'Enter 1 if you want to add NEWS,'
+                    '\nEnter 2 if you want to add Private Ad,'
+                    '\nEnter 3 if you want to add Joke value,'
+                    '\nType here and click Enter: '))
             except ValueError:
                 print("Sorry, I didn't understand that.")
                 continue
@@ -80,6 +84,11 @@ def main():
         print("File parsed successfully with:\n")
         json_to_file = ParseJson()
         json_to_file.read_from_json()
+
+    if input_one == 5:
+        print("File parsed successfully with:\n")
+        xml_to_file = ParseXML()
+        xml_to_file.read_from_xml()
 
 
 if __name__ == '__main__':

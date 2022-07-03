@@ -35,3 +35,40 @@ Actual until: 2022-07-31, 35 days left
 Joke of the day:
 test joke for parsing json to the text file
 This is all
+
+
+News:
+Test news for parsing XML
+Odessa: 07/03/2022, 13:04
+
+Private Ad:
+Test advertisement for parsing XML
+Actual until: 2022-09-01, 60 days left
+
+Joke of the day:
+Joke test for parsing XML
+See you Soon
+
+News:
+test news for parsing json to the text file
+Kyiv: 07/03/2022, 13:06
+
+Private Ad:
+test advertisement for parsing json to the text file
+Actual until: 2022-07-31, 28 days left
+
+Joke of the day:
+test joke for parsing json to the text file
+This is all
+
+News:
+Test news for parsing XML
+Odessa: 07/03/2022, 13:06
+
+Private Ad:
+Test advertisement for parsing XML
+Actual until: 2022-09-01, 60 days left
+
+Joke of the day:
+Joke test for parsing XML
+See you Soon

@@ -1,5 +1,6 @@
 from datetime import datetime
 import json
+import xml.etree.ElementTree as ET
 
 class Publish:
     def __init__(self, base_text):
@@ -54,7 +55,7 @@ class Jokes(Publish):
         f.write(f'\nJoke of the day:\n{self.text}\n{self.ending}\n')
         f.close()
 
-class ParsJson:
+class ParseJson:
     def read_from_json(self):
         with open(r"Test.txt", "a") as input_text:
             conv_to_dict = json.load(open('json_file.json'))
@@ -81,3 +82,38 @@ class ParsJson:
                 except ValueError as e:
                     print(e)
                 print(conv_to_dict[i])
+
+class ParseXML:
+    def read_from_xml(self):
+        tree = ET.parse('xml_file.xml')
+        root = tree.getroot()
+        with open(r"Test.txt", "a") as f:
+            for publish_article in root.findall('PublishArticle'):
+                try:
+                    if publish_article.get('name').lower() == 'news':
+                        xml_text = publish_article.find('TypeData').find('Info').text
+                        xml_city = publish_article.find('TypeData').find('Location').text
+                        n = News(news_text=xml_text, city=xml_city)
+                        n.write_news_to_file()
+                        print(publish_article.attrib)
+                        print(xml_text)
+                        print(f'{xml_city}\n')
+                    elif publish_article.get('name').lower() == 'advertising':
+                        xml_adv_text = publish_article.find('TypeData').find('Adv_Info').text
+                        xml_adv_date = publish_article.find('TypeData').find('Adv_Date').text
+                        ad = Adv(adv_text=xml_adv_text, input_future=xml_adv_date)
+                        ad.write_adv_to_file()
+                        print(publish_article.attrib)
+                        print(xml_adv_text)
+                        print(f'{xml_adv_date}\n')
+                    elif publish_article.get('name').lower() == 'joke':
+                        xml_joke_text = publish_article.find('TypeData').find('Joke_Info').text
+                        xml_ending = publish_article.find('TypeData').find('Ending').text
+                        jk = Jokes(joke_text=xml_joke_text, ending=xml_ending)
+                        jk.write_joke_to_file()
+                        print(publish_article.attrib)
+                        print(xml_joke_text)
+                        print(f'{xml_ending}\n')
+                except ValueError as e:
+                    print(e)
+                # print(publish_article.attrib)
