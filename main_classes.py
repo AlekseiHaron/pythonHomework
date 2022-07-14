@@ -1,12 +1,14 @@
 from datetime import datetime
 import json
 import xml.etree.ElementTree as ET
+import pyodbc
+import sqlite3
 
 class Publish:
     def __init__(self, base_text):
         self.text = base_text
 
-
+a = Publish('tedfsdf')
 class News(Publish):
 
     def __init__(self, news_text, city):
@@ -117,3 +119,114 @@ class ParseXML:
                 except ValueError as e:
                     print(e)
                 # print(publish_article.attrib)
+
+
+class SQLite:
+    def __init__(self):
+        self.news_text = 'News log text '
+        self.news_location = 'Cape Town'
+        self.adv_text = 'ADV Text'
+        self.adv_date = '2022-09-01'
+        self.joke_text = 'Joke Text'
+        self.ending = 'The end'
+        self.connection = sqlite3.connect('test.db')
+        self.cursor = self.connection.cursor()
+        self.cursor.execute('CREATE TABLE IF NOT EXISTS news(news_text text, location text)')
+        self.cursor.execute('CREATE TABLE IF NOT EXISTS adv(adv_text text, adv_date string)')
+        self.cursor.execute('CREATE TABLE IF NOT EXISTS joke(joke_text text, ending text)')
+
+    def insert_val(self):
+        self.cursor.execute(f"SELECT news_text FROM news WHERE news_text = '{self.news_text}'")
+        if self.cursor.fetchone() is not None:
+            print('News table Duplicate check: Value is already exists')
+        else:
+            self.cursor.execute(f"INSERT INTO news VALUES('{self.news_text}','{self.news_location}')")
+
+        self.cursor.execute(f"SELECT adv_text FROM adv WHERE adv_text = '{self.adv_text}'")
+        if self.cursor.fetchone() is not None:
+            print('Advertise table Duplicate check: Value is already exist')
+        else:
+            self.cursor.execute(f"INSERT INTO adv VALUES('{self.adv_text}','{self.adv_date}')")
+
+        self.cursor.execute(f"SELECT joke_text FROM joke WHERE joke_text = '{self.joke_text}'")
+        if self.cursor.fetchone() is not None:
+            print('Joke table Duplicate check: Value is already exist')
+        else:
+            self.cursor.execute(f"INSERT INTO joke VALUES('{self.joke_text}','{self.ending}')")
+
+        self.cursor.execute('select * from news')
+        result_n = self.cursor.fetchall()
+        self.cursor.execute('select * from adv')
+        result_adv = self.cursor.fetchall()
+        self.cursor.execute('select * from joke')
+        result_j = self.cursor.fetchall()
+        # print(result)
+        return f"\nNews table result:{result_n}, \nAdv table result:{result_adv}, \nJoke table result:{result_j}"
+
+    def __del__(self):
+        self.connection.commit()
+        self.cursor.close()
+        self.connection.close()
+
+
+a = SQLite()
+b = a.insert_val()
+print(a)
+print(b)
+
+
+
+
+
+# connection = sqlite3.connect('test.db')
+# cursor = connection.cursor()
+#
+# cursor.execute('CREATE TABLE IF NOT EXISTS news(news_text text , location text)')
+# cursor.execute('CREATE TABLE IF NOT EXISTS adv(adv_text text, adv_date string)')
+#
+# n_value = 'test2'
+# adv_val = 'adv_test'
+# cursor.execute(f"SELECT news_text FROM news WHERE news_text = '{n_value}'")
+# # print(cursor.fetchone()[0])
+#
+# if cursor.fetchone() is not None:
+#     print('Value is already exists')
+# else:
+#     cursor.execute(f"INSERT INTO news VALUES('{n_value}','Carribian')")
+#
+# cursor.execute(f"SELECT * FROM adv WHERE adv_text = '{adv_val}'")
+# # print(cursor.fetchone())
+# if cursor.fetchone() is not None:
+#     print('ADV tables value is already exists')
+# else:
+#     cursor.execute(f"INSERT INTO adv VALUES('{adv_val}','2022-10-01')")
+#
+# connection.commit()
+# cursor.execute('select * from news')
+# results = cursor.fetchall()
+# cursor.execute('select * from adv')
+# result_adv = cursor.fetchall()
+#
+#
+# print(results)
+# print(result_adv)
+# cursor.close()
+# connection.close()
+
+
+# connection = pyodbc.connect('DRIVER={SQLite3 ODBC Driver};SERVER=localhost;Direct=True;DATABASE=test.db;Trusted_connection=yes')
+# cursor = connection.cursor()
+# cursor.execute("""
+#         SELECT * FROM sqlite_master WHERE type = 'table' AND name = 'news'
+#         """)
+# if cursor.fetchone()[0] != None:
+#     print('Table is already created')
+# else:
+#     cursor.execute('CREATE TABLE news(news_text text unique, location text)')
+# cursor.execute("INSERT OR IGNORE INTO news VALUES('News test','Cape Town')")
+# connection.commit()
+# cursor.execute('select * from news')
+# result = cursor.fetchall()
+# print(result)
+# cursor.close()
+# connection.close()

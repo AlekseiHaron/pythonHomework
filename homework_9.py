@@ -1,7 +1,7 @@
 from datetime import datetime
 from file_to_file import FileToFile
 from csv_parsing import CSVParsing
-from main_classes import News, Adv, Jokes, ParseJson, ParseXML
+from main_classes import News, Adv, Jokes, ParseJson, ParseXML, SQLite
 
 
 def main():
@@ -11,11 +11,12 @@ def main():
                                   '\nEnter 2 if you want to add feeds from File:'
                                   '\nEnter 3 to parsing from File to CSV:'
                                   '\nEnter 4 if you want to load JSON to file:'
-                                  '\nEnter 5 if you want to load XML to file:'))
+                                  '\nEnter 5 if you want to load XML to file:'
+                                  '\nEnter 6 create tables with data:'))
         except ValueError:
             print("Sorry, I didn't understand that.")
             continue
-        if input_one not in [1, 2, 3, 4, 5]:
+        if input_one not in [1, 2, 3, 4, 5, 6]:
             print("Please enter correct number")
             continue
         else:
@@ -89,6 +90,12 @@ def main():
         print("File parsed successfully with:\n")
         xml_to_file = ParseXML()
         xml_to_file.read_from_xml()
+
+    if input_one == 6:
+        print("Tables successfully created:\n")
+        tables = SQLite()
+        data = tables.insert_val()
+        print(data)
 
 
 if __name__ == '__main__':
